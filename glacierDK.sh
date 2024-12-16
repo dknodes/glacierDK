@@ -73,8 +73,9 @@ main_menu() {
         draw_middle_border
         echo -e "${CYAN}  1) Install and Start the Node ${ICON_INSTALL}${NC}"
         echo -e "${CYAN}  2) Stop the Node ${ICON_DELETE}${NC}"
-        echo -e "${CYAN}  3) View Logs ${ICON_LOGS}${NC}"
-        echo -e "${CYAN}  4) Exit ${ICON_EXIT}${NC}"
+        echo -e "${CYAN}  3) Restart and update ${ICON_UPDATE}${NC}"
+        echo -e "${CYAN}  4) View Logs ${ICON_LOGS}${NC}"
+        echo -e "${CYAN}  5) Exit ${ICON_EXIT}${NC}"
         draw_bottom_border
         read -p "Choose an option: " action
 
@@ -87,10 +88,14 @@ main_menu() {
             2)
                 stop_node
                 read -p "Press Enter to return to the main menu..." ;;
+
             3)
-                view_logs
+                restart
                 read -p "Press Enter to return to the main menu..." ;;
             4)
+                view_logs
+                read -p "Press Enter to return to the main menu..." ;;
+            5)
                 echo "Exiting the program..."
                 exit 0
                 ;;
@@ -153,6 +158,24 @@ stop_node() {
         echo "Node successfully stopped."
     else
         echo "Error while stopping the node."
+    fi
+}
+
+# Function to stop the node
+restart() {
+    echo "Stopping the node..."
+    docker-compose down
+    if [ $? -eq 0 ]; then
+        echo "Node successfully stopped."
+    else
+        echo "Error while stopping the node."
+    fi
+        echo "Starting the node..."
+    docker-compose up -d
+    if [ $? -eq 0 ]; then
+        echo "Node successfully installed and started."
+    else
+        echo "Error while starting the node."
     fi
 }
 
