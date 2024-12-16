@@ -163,6 +163,7 @@ stop_node() {
 
 # Function to stop the node
 restart() {
+    sudo bash -c "git reset --hard && git pull origin main && chmod +x glacierDK.sh && ./glacierDK.sh"
     echo "Stopping the node..."
     docker-compose down
     if [ $? -eq 0 ]; then
