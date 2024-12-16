@@ -1,6 +1,6 @@
 services:
   glacier-verifier:
-    image: docker.io/glaciernetwork/glacier-verifier:v0.0.3
+    image: docker.io/glaciernetwork/glacier-verifier:v0.0.4
     container_name: glacier-verifier
     ports:
       - "10801:10801"
