@@ -173,7 +173,7 @@ restart() {
         echo "Starting the node..."
     docker-compose up -d
     if [ $? -eq 0 ]; then
-        echo "Node successfully installed and started."
+        echo "Node successfully started."
     else
         echo "Error while starting the node."
     fi
